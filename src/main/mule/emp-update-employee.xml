@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<mule xmlns:http="http://www.mulesoft.org/schema/mule/http" xmlns="http://www.mulesoft.org/schema/mule/core"
+	xmlns:doc="http://www.mulesoft.org/schema/mule/documentation"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd
+http://www.mulesoft.org/schema/mule/http http://www.mulesoft.org/schema/mule/http/current/mule-http.xsd">
+	<http:listener-config name="HTTP_Listener_config" doc:name="HTTP Listener config" doc:id="c72f7551-8bf3-4ba5-a1e0-26f47965d64c" >
+		<http:listener-connection host="0.0.0.0" port="8082" />
+	</http:listener-config>
+	<flow name="emp-update-employeeFlow" doc:id="13a5b716-7add-442c-9e71-943cb6a3f69e" >
+		<http:listener doc:name="Emp-update-Listener" doc:id="d7545c80-a5c9-4b38-8620-ea2af21456a3" config-ref="EMP-sapi-HTTP_Listener_config" path="update-employee" allowedMethods="POST"/>
+		<logger level="INFO" doc:name="Entry Log" doc:id="15c0373c-1336-496c-9ae4-da06a6017ea8" message="started emp update flow and received payload is: #[payload]"/>
+	</flow>
+</mule>
